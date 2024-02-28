@@ -1,0 +1,7 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null # remove the null part in JSON
+
+logging:
+  level:
+    org.apache.coyote.http11.Http11InputBuffer: ERROR # Incoming HTTP requests
