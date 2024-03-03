@@ -1,7 +1,36 @@
 spring:
+#  去掉json payload中的value为null的
   jackson:
-    default-property-inclusion: non_null # remove the null part in JSON
+    default-property-inclusion: non_null
+  cloud:
+    openfeign:
+#      openfeign 没有自己的authorization，用的是springboot 的security中的authorizations
+      oauth2:
+        enabled: true
+#        此处的twitch指代的是下面security registration下面的twicth
+        clientRegistrationId: twitch
+      client:
+        config:
+          twitch-api:
+            url: https://api.twitch.tv/helix
+            loggerLevel: basic
+            default-request-headers:
+              Client-Id: "au0dx63n30v3ucjr8ennik93b0hs1i"
+  security:
+    oauth2:
+      client:
+        registration:
+          twitch:
+            authorization-grant-type: client_credentials
+            client-authentication-method: client_secret_post
+            client-id: "au0dx63n30v3ucjr8ennik93b0hs1i"
+            client-secret: "ssgusiroy6w5i9n0dt9c3ipg2qbpjq"
+        provider:
+          twitch:
+            token-uri: https://id.twitch.tv/oauth2/token
+
 
 logging:
   level:
-    org.apache.coyote.http11.Http11InputBuffer: ERROR # Incoming HTTP requests
+    org.apache.coyote.http11.Http11InputBuffer: DEBUG # Incoming HTTP requests
+    com.laioffer.twitch.external.TwitchApiClient: DEBUG # Outgoing HTTP requests
