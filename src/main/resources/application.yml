@@ -29,6 +29,17 @@ spring:
           twitch:
             token-uri: https://id.twitch.tv/oauth2/token
 
+  datasource:
+    url: jdbc:mysql://${DATABASE_URL:localhost}:${DATABASE_PORT:3307}/twitch?createDatabaseIfNotExist=true
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:secret}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  sql:
+    init:
+      mode: always  # everytime starting db, initialize new db and tables and cleean data for dev
+      schema-locations: "classpath:database-init.sql"
+
 
 logging:
   level:
