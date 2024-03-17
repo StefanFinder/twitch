@@ -4,7 +4,7 @@ import com.laioffer.twitch.external.TwitchService;
 import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
-import com.laioffer.twitch.model.TypeGroupedItemList;
+import com.laioffer.twitch.model.item.TypeGroupedItemList;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
