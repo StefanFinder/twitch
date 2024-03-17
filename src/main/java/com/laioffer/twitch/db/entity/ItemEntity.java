@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
-import com.laioffer.twitch.model.ItemType;
+import com.laioffer.twitch.model.item.ItemType;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 // this is the entity class we create in order to communicate with db.
+@Table("items")
 public record ItemEntity(
+        @Id
         Long id,
         @JsonProperty("twitch_id") String twitchId,
         String title,

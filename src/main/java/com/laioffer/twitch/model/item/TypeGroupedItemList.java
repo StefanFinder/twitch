@@ -1,9 +1,10 @@
-package com.laioffer.twitch.model;
+package com.laioffer.twitch.model.item;
 
 import com.laioffer.twitch.db.entity.ItemEntity;
 import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
+import com.laioffer.twitch.model.item.ItemType;
 
 import java.util.ArrayList;
 import java.util.List;
