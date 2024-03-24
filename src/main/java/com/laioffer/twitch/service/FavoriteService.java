@@ -26,7 +26,7 @@ public class FavoriteService {
         this.favoriteRecordRepository = favoriteRecordRepository;
     }
 
-    //    根据user，如果此时user调用了这个方法，那就清空cache，下次直接去db里取数据
+    // 根据user，如果此时user调用了这个方法，那就清空cache，下次直接去db里取数据
     // 此时因为我们的输入有两个值， user和twitch ID，如果我们不明确key是user的话，那么item会和user合到一起来
     // 清空cache，这样是找不到的，因为我们只需要根据不同的用户来清空对于的cache，所以此时key是user
     @CacheEvict(cacheNames = "recommend_items", key = "#user")

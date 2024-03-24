@@ -110,7 +110,6 @@ public class FavoriteServiceTests {
 
         favoriteService.unsetFavoriteItem(user, "twitchId");
 
-
         Mockito.verify(favoriteRecordRepository).delete(1L, 1L);
     }
 
