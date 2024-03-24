@@ -32,5 +32,4 @@ public class RecommendationController {
         }
         return recommendationService.recommendItems(userEntity);
     }
-
 }
