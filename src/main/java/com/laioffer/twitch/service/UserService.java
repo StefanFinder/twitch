@@ -1,7 +1,7 @@
 package com.laioffer.twitch.service;
 
 import com.laioffer.twitch.db.entity.UserEntity;
-import com.laioffer.twitch.db.repository.UserRepository;
+import com.laioffer.twitch.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -5,6 +5,7 @@ import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Game;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,12 +20,14 @@ public class TwitchService {
         this.twitchApiClient = twitchApiClient;
     }
 
-
+    // we will add the result to a cache named "top_games" after call this
+    // next time we will go to this cache and check if there is anything
+    @Cacheable("top_games")
     public List<Game> getTopGames() {
         return twitchApiClient.getTopGames().data();
     }
 
-
+    @Cacheable("games_by_name")
     public List<Game> getGames(String name) {
         return twitchApiClient.getGames(name).data();
     }

@@ -40,6 +40,11 @@ spring:
       mode: always  # everytime starting db, initialize new db and tables and cleean data for dev
       schema-locations: "classpath:database-init.sql"
 
+  cache:
+#    This is the name we give to the cache
+    caffeine:
+      spec: expireAfterWrite=1m  # TTL(Time to leave), after this time, the cache not being useed will be freed up
+
 
 logging:
   level:

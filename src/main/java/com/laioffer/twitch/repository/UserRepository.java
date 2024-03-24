@@ -1,4 +1,4 @@
-package com.laioffer.twitch.db.repository;
+package com.laioffer.twitch.repository;
 
 import com.laioffer.twitch.db.entity.UserEntity;
 import org.springframework.data.jdbc.repository.query.Modifying;

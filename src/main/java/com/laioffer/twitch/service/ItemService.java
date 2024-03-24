@@ -5,6 +5,7 @@ import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
 import com.laioffer.twitch.model.item.TypeGroupedItemList;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public class ItemService {
     }
 
 
+    // after 1st time we use a gameId to get Items, next time when we are using the same gameId
+    // within TTL time, will get this from cache
+    @Cacheable("items")
     public TypeGroupedItemList getItems(String gameId) {
         List<Video> videos = twitchService.getVideos(gameId, SEARCH_RESULT_SIZE);
         List<Clip> clips = twitchService.getClips(gameId, SEARCH_RESULT_SIZE);

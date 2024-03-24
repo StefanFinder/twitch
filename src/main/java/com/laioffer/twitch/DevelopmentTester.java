@@ -1,9 +1,9 @@
 package com.laioffer.twitch;
 
 import com.laioffer.twitch.db.entity.UserEntity;
-import com.laioffer.twitch.db.repository.FavoriteRecordRepository;
-import com.laioffer.twitch.db.repository.ItemRepository;
-import com.laioffer.twitch.db.repository.UserRepository;
+import com.laioffer.twitch.repository.FavoriteRecordRepository;
+import com.laioffer.twitch.repository.ItemRepository;
+import com.laioffer.twitch.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;

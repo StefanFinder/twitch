@@ -1,4 +1,4 @@
-package com.laioffer.twitch.db.repository;
+package com.laioffer.twitch.repository;
 
 import com.laioffer.twitch.db.entity.ItemEntity;
 import org.springframework.data.repository.ListCrudRepository;

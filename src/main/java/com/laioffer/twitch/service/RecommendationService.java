@@ -7,6 +7,7 @@ import com.laioffer.twitch.external.model.Clip;
 import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
 import com.laioffer.twitch.model.item.TypeGroupedItemList;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,11 @@ import java.util.Set;
 
 @Service
 public class RecommendationService {
+    // MAX_GAME_EED is
+    // PER_PAGE_ITEM_SIZE is the total number for each type
+    // for instance, 20 stream, 20 videos, 20 clips
+    // for video and clip, we couldn't pass multiple game ids, so we selecy MAX_GAME_SEED games
+    // and get their videos and clips
     private static final int MAX_GAME_SEED = 3;
     private static final int PER_PAGE_ITEM_SIZE = 20;
 
@@ -69,7 +75,8 @@ public class RecommendationService {
         return resultItem;
     }
 
-
+    // if here we have a key here, it's like a HashMap, and the key here are the keys, content is the value
+    @Cacheable("recommend_items")
     public TypeGroupedItemList recommendItems(UserEntity userEntity) {
         List<String> gameIds;
         Set<String> exclusions = new HashSet<>();
@@ -89,7 +96,7 @@ public class RecommendationService {
             }
         }
 
-
+        // here if you have more than MAX_GAME_SEED games, it will only give you MAX_GAME_SEED games.
         int gameSize = Math.min(gameIds.size(), MAX_GAME_SEED);
         int perGameListSize = PER_PAGE_ITEM_SIZE / gameSize;
 

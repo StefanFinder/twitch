@@ -36,7 +36,7 @@ public class AppConfig {
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers(HttpMethod.GET, "/", "/index.html", "/*.json", "/*.png", "/static/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/login", "/register", "/logout").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/recommendation", "/game").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/recommendation", "/game", "/search").permitAll()
                                 .anyRequest().authenticated() // 剩下的都需要验证
                 )
                 .exceptionHandling()
